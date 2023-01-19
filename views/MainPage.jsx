@@ -4,7 +4,18 @@ const Layout = require('./Layout');
 function MainPage() {
   return (
     <Layout>
-      <h1>Hello</h1>
+      <header>
+        <nav className="header_nav">
+          <ul className="header_list">
+            <li className="header_item">
+              <a href="/login">Login</a>
+            </li>
+            <li>
+              <a href="/register">Rigistration</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
     </Layout>
   );
 }

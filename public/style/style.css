@@ -3,3 +3,25 @@
   color: red;
   height: 100vh;
 }
+
+li {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header_nav {
+padding: 10px;
+}
+.header_list {
+  display: flex;
+  text-transform: uppercase;
+  color: white;
+}
+
+.header_item:not(:last-child) {
+  margin: 0 10px 0 0 ;  
+}
