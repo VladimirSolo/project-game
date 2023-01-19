@@ -211,8 +211,8 @@ platforms = [
         }),
   new Platform({
     x:-1,
-     y:700,
-     image: createImage('./img/platform.png'),
+     y:650,
+     image: createImage('./img/landLong.jpg'),
     }),
   new Platform({
     x:500,
@@ -251,6 +251,11 @@ genericObjects = [
     x:0,
      y:0,
           image: createImage('./img/background.png'),
+    }),
+  new GenericObject({
+    x:3500,
+     y:300,
+          image: createImage('./img/orda.png'),
     }),
   new GenericObject({
     x:0,
