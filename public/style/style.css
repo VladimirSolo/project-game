@@ -1,3 +1,9 @@
+@import "fonts.css";
+
+bode {
+  font-family: "Morpheus", sans-serif;
+  
+}
 .container {
   background: url('../img/149-1.jpg') 0 0/cover no-repeat;
   color: red;
@@ -20,8 +26,17 @@ padding: 10px;
   display: flex;
   text-transform: uppercase;
   color: white;
+  font-size: 24px;
 }
 
 .header_item:not(:last-child) {
   margin: 0 10px 0 0 ;  
+}
+
+.header_link {
+  letter-spacing: 5px;
+}
+
+.header_link:hover {
+  color: yellowgreen;
 }
