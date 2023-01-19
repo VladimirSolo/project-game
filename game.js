@@ -1,6 +1,9 @@
 // const canvas = document.querySelector('canvas');
 // import platformIm from './img/platfom.png';
 
+// const Player = require('./Player');
+// import Player from './Player';
+// console.log(Player)
 const canvas = document.createElement('canvas');
 document.body.append(canvas);
 
@@ -44,18 +47,59 @@ class Player {
       x: 0,
       y: 0,
     };
-    this.height = 50;
-    this.width = 50;
+    // размеры игрока
+    this.height = 70;
+    this.width = 100;
     // 43 add speed
     this.speed = 13;
+    // 51 add image
+    this.image = createImage('./img/idle.png');
+    this.frames = 0;
+    // 53 add run img
+    this.sprites = {
+      stand: {
+        right: createImage('./img/idle.png'),
+        left: createImage('./img/idleLeft.png'),
+        cropWidth: 160,
+        width:150,
+      },
+      run: {
+        right: createImage('./img/Run.png'),
+        left: createImage('./img/RunLeft.png'),
+        cropWidth: 280,
+        width:300,
+      }
+    }
+    this.currentSprite = this.sprites.stand.right;
+    // 55
+    this.currentCropWidth = 160;
   }
 
   draw() {
-    c.fillStyle = 'red';
-    c.fillRect(this.position.x, this.position.y, this.width, this.height);
+ // 50 create heroes
+ c.drawImage(
+  this.currentSprite,
+  160 * this.frames,
+  0,
+  160,
+  111,
+  this.position.x,
+  this.position.y,
+  this.width,
+  this.height,
+  );
+    // c.fillStyle = 'red';
+    // c.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 
   update() {
+    // 52 change img
+    if (this.frames > 5 && (this.currentSprite === this.sprites.stand.right || this.currentSprite === this.sprites.stand.left)){
+      this.frames = 0;
+    } else if (this.frames > 5 && (this.currentSprite === this.sprites.run.right || this.currentSprite === this.sprites.run.left)) {
+      this.frames = 0;
+    }
+    this.frames++;
     this.draw();
     // 7 plus x
     this.position.x += this.velocity.x;
@@ -305,8 +349,8 @@ if (scrollOffset > 5000) {
 }
 
 // 39 losing
-// console.log(player.position.y)
-if (player.position.y > canvas.height - 55) {
+console.log(player.position.y)
+if (player.position.y > canvas.height - 75) {
   // console.log('You Lose')
   // 41 init restart game
   init();
@@ -326,10 +370,20 @@ window.addEventListener('keydown', (event) => {
       // console.log('d')
       keys.d.pressed = true;
       //  player.velocity.x = 1
+      // 54
+      player.currentSprite = player.sprites.run.right;
+      //56
+      player.currentCropWidth = player.sprites.run.cropWidth;
+      //
+      player.width = player.sprites.run.width;
       break;
     case 'a':
       keys.a.pressed = true;
       // player.velocity.x = -1;
+      // 60
+      player.currentSprite = player.sprites.run.left;
+      player.currentCropWidth = player.sprites.run.cropWidth;
+      player.width = player.sprites.run.width;
       break;
     case 'w':
       // dont repeat button up
@@ -344,9 +398,17 @@ window.addEventListener('keyup', (event) => {
   switch (event.key) {
     case 'd':
       keys.d.pressed = false;
+      // 59
+      player.currentSprite = player.sprites.stand.right;
+      player.currentCropWidth = player.sprites.stand.cropWidth;
+      player.width = player.sprites.stand.width;
       break;
     case 'a':
       keys.a.pressed = false;
+      // 
+      player.currentSprite = player.sprites.stand.left;
+      player.currentCropWidth = player.sprites.stand.cropWidth;
+      player.width = player.sprites.stand.width;
       break;
   }
   // console.log(event);
