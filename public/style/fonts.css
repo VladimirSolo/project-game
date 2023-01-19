@@ -1,0 +1,4 @@
+@font-face {
+  font-family: "Morpheus";
+  src: url("../style/fonts/Morpheus.woff2"), format('woff2'), url("../style/fonts/Morpheus.woff"), format('woff');
+}
