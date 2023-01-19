@@ -4,7 +4,8 @@ const renderTemplate = require('../lib/renderTemplate');
 const MainPage = require('../views/MainPage');
 
 router.get('/', (req, res) => {
-  renderTemplate(MainPage, {}, res);
+  const user = req.session?.user;
+  renderTemplate(MainPage, { user }, res);
 });
 
 module.exports = router;
