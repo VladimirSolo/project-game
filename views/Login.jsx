@@ -11,16 +11,18 @@ function Login({ message, error }) {
         <pre>{error.stack}</pre>
       </div>
       )}
-      <h1>Login Page</h1>
-      <form action="/login" method="POST" id="loginForm" className="col-6">
-        <div className="mb-3">
-          <input name="name" type="text" className="form-control" placeholder="enter your name" required />
-        </div>
-        <div className="mb-3">
-          <input name="password" type="password" className="form-control" placeholder="enter your password" required />
-        </div>
-        <button type="submit" className="btn btn-primary">Login</button>
-      </form>
+      <div className="login_page">
+        <h1>Login Page</h1>
+        <form action="/login" method="POST" id="loginForm" className="col-6 login_form">
+          <div className="mb-3">
+            <input name="name" type="text" className="form-control" placeholder="enter your name" required />
+          </div>
+          <div className="mb-3">
+            <input name="password" type="password" className="form-control" placeholder="enter your password" required />
+          </div>
+          <button type="submit" className="btn btn-primary">Login</button>
+        </form>
+      </div>
     </Layout>
   );
 }
